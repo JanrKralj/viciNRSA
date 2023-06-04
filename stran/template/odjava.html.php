@@ -5,6 +5,8 @@
 <?php
 session_destroy();
 $_SESSION = array();
+setcookie("prijavljen", '', time() - 3600, "/");
+echo "Cookie deleted!";
 ?>
 
 <h2>Želite potrditi odjavo iz računa?</h2>

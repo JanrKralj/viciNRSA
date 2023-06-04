@@ -1,7 +1,6 @@
-<?php ob_start()?>
+
 
 <?php
-
 
 require "template/layout.html.php";
 

@@ -1,3 +1,8 @@
+<?php
+  ob_start();
+  session_start();
+?>
+
 <!DOCTYPE HTML>
 <html>
   <head>
@@ -34,28 +39,28 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-      <ul id="nav" class="nav navbar-nav navbar-right">
-        <?php
-        session_start();
-        if(isset($_SESSION['user'])) {
-          echo "<li id='trenutno-prijavljen'>" . $_SESSION['user'] ."</li>";
-        }
-        ?>
-        <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+      
         <?php
           if(isset($_SESSION['user'])) {
+            echo '<ul id="nav" class="nav navbar-nav navbar-right">';
+            echo "<li id='trenutno-prijavljen'>" . $_SESSION['user'] ."</li>";
+            echo "<li><a href='index.php'><i class='fa fa-home' aria-hidden='true'></i></a></li>";
             echo '<li><a href="index.php?stran=odjava">Odjava</li>';
+            echo '</ul>';
           } else {
+            echo '<ul id="nav" class="nav navbar-nav navbar-right">';
+            echo "<li><a href='index.php'><i class='fa fa-home' aria-hidden='true'></i></a></li>";
             echo '<li><a href="index.php?stran=registracija">Registracija</a></li>';
             echo '<li><a href="index.php?stran=prijava">Prijava</a></li>';
+            echo '</ul>';
           }
         ?>
-      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 <div class="container">
 <?php
+
 $content = ob_get_clean();
 echo $content;
  ?>
