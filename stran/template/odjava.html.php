@@ -5,7 +5,7 @@
 <?php
 session_destroy();
 $_SESSION = array();
-setcookie("prijavljen", '', time() - 3600, "/");
+setcookie("prijavljen", '', time() - 1, "/");
 echo "Cookie deleted!";
 ?>
 

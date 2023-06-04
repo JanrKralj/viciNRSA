@@ -1,6 +1,6 @@
 <?php
   ob_start();
-  session_start();
+
 ?>
 
 <!DOCTYPE HTML>
@@ -45,7 +45,7 @@
             echo '<ul id="nav" class="nav navbar-nav navbar-right">';
             echo "<li id='trenutno-prijavljen'>" . $_SESSION['user'] ."</li>";
             echo "<li><a href='index.php'><i class='fa fa-home' aria-hidden='true'></i></a></li>";
-            echo '<li><a href="index.php?stran=odjava">Odjava</li>';
+            echo '<li><a href="index.php?stran=odjava">Odjava</a></li>';
             echo '</ul>';
           } else {
             echo '<ul id="nav" class="nav navbar-nav navbar-right">';
