@@ -16,6 +16,9 @@ if (isset($_GET['stran'])){ //ce se v URL naslovu nahaja spremenljivka stran
   else if(($_GET['stran']=="dodajVic" && isset($_SESSION['user']))) {
     include 'template/dodajVic.html.php';
   }
+  else if($_GET['stran'] == "vsiVici") {
+    include "template/vsiVici.html.php";
+  }
   else {
     include 'template/error.html.php';
   }

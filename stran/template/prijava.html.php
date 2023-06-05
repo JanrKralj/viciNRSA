@@ -28,7 +28,6 @@
           $userPassword = "12345678";
           $db = 'nrsa';
 
-
           if (isset($_POST['signin'])) {
             $conn = new mysqli($host, $username, $userPassword, $db);
             $email = strip_tags(trim($_POST['email']));
