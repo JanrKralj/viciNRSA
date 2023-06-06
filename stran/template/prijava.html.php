@@ -35,27 +35,27 @@
             $hashedPwd = sha1($password);
             
             if (empty($email) || $password == "") {
-              echo '<p style="color: red;">Niste izpolnili vseh polj</p>';
+              echo '<div class="alert alert-danger" role="alert"><br><p>Niste izpolnili vseh polj</p></div>';
             } else {
              
                 $hashedPwd = sha1($password);
                 $checkQuery = "SELECT (USERNAME) FROM USER WHERE USERNAME = '$email';";
                 $rezultat = mysqli_query($conn, $checkQuery);
                 if(mysqli_num_rows($rezultat) == 0) {
-                  echo '<p style="color: red;">Uporabnik z imenom ' . $email .' ne obstaja. Če želite ustvariti račun. Pojdite na <a href="index.php?stran=registracija">Regostracijo</a>.</p>';
+                  echo '<div class="alert alert-danger" role="alert"><br><p>Uporabnik z imenom ' . $email .' ne obstaja. Če želite ustvariti račun. Pojdite na <a href="index.php?stran=registracija">Regostracijo</a></p></div>';
                 } else {
 
                   $checkPwdQuery = "SELECT username, password FROM USER WHERE username = '$email' AND password = '$hashedPwd'";
                   $res = mysqli_query($conn, $checkPwdQuery);
                   if(mysqli_num_rows($res) == 0) {
-                    echo "<p style='color: red;'</p>Nepravilno geslo!";
+                    echo '<div class="alert alert-danger" role="alert"><br><p>Nepravilno geslo!</p></div>';
                   } else {
                     $date = date('Y-m-d H:i:s');
                     $_SESSION['user'] = $email;
                     setcookie("prijavljen", $email, time() + 3600 * 24);
                     $zadnjaPrijavaQuery = "UPDATE USER SET zadnjaPrijava = '$date' WHERE USERNAME = '$email';";
                     mysqli_query($conn, $zadnjaPrijavaQuery);
-                    echo "<br><p style='color: green;'>Prijava uspešna! Pozdravljen " . $_SESSION['user'] ."</p>";
+                    echo '<div class="alert alert-success" role="alert"><br><p>Prijava uspešna! Pozdravljen ' . $_SESSION['user'] .'</p></div>';
                   }
 
                   
@@ -67,7 +67,7 @@
           ?>
           <br>
           <input name="signin" type="submit" class="btn btn-primary" value="Prijavi se!" />
-          <button type="button" class="btn btn-link"><a href="index.php?">Domov</a></button>
+          <a class="btn btn-link" href="index.php?">Domov</a>
         </form>
       </div>
     </div>

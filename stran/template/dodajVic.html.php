@@ -40,6 +40,7 @@
             </select>
         </div>
         <button type="submit" class="btn btn-primary" name="dodajVic" style="margin-top: 10px;">Dodaj vic</button>
+        <a class="btn btn-danger" style="margin-top: 0.7em; margin-left: 1em;" href="index.php?stran=admin">Nazaj na vice</a>
     </form>
 </div>
 

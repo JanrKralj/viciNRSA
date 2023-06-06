@@ -69,6 +69,7 @@ echo $content;
  </div>
 
   <style>
+
     .navbar {
       background-color: transparent;
       border: none;

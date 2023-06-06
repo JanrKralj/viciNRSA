@@ -38,10 +38,11 @@
               echo '<p style="color: red;">Niste izpolnili vseh polj</p>';
             } else {
               if ($password1 != $password2) {
-                echo '<p style="color: red;">Gesli se ne ujemata</p>';
+                echo '<div class="alert alert-danger" role="alert"><br><p>Gesli se ne ujemata!</p></div>';
               }else if(strlen($password1) < 8) {
                 $dolzinaGesla = strlen($password1);
-                echo '<p style="color: red;">Geslo je krajše od 8 (dolgo je ' . $dolzinaGesla . ' znakov)</p>';
+                echo '';
+                echo '<div class="alert alert-danger" role="alert"><br><p style="color: red;">Geslo je krajše od 8 (dolgo je ' . $dolzinaGesla . ' znakov)</p></p></div>';
               }
               else {
                 $hashedPwd = sha1($password1);
@@ -51,12 +52,13 @@
                 $checkQuery = "SELECT (USERNAME) FROM USER WHERE USERNAME = '$noviemail';";
                 $rezultat = mysqli_query($conn, $checkQuery);
                 if(mysqli_num_rows($rezultat) != 0) {
-                  echo '<p style="color: red;">Uporabnik z imenom ' . $noviemail .' že obstaja</p>';
+                  echo '<div class="alert alert-danger" role="alert"><br><p>Uporabnik z imenom ' . $noviemail . '</p></div>';
                 } else {
                   if ($conn->query("INSERT INTO USER (USERNAME, PASSWORD, REGISTER) VALUES ('$noviemail', '$hashedPwd', '$date');")) {
-                    echo "Registracija je uspela";
+                    echo '<div class="alert alert-success" role="alert"><br><p>Registracija uspela!</p></div>';
+                    
                   } else {
-                    echo "Registracija ni uspela";
+                    echo '<div class="alert alert-danger" role="alert"><br><p>Registracija ni uspela!</p></div>';
                   }
                 }
               }
@@ -68,7 +70,7 @@
 
           ?>
           <input name="signin" type="submit" class="btn btn-primary" value="Registriraj se!" />
-          <button type="button" class="btn btn-link"><a href="index.php?">Domov</a></button>
+          <a class="btn btn-link" href="index.php?">Domov</a>
         </form>
       </div>
     </div>

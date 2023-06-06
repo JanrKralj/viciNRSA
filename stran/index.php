@@ -19,6 +19,15 @@ if (isset($_GET['stran'])){ //ce se v URL naslovu nahaja spremenljivka stran
   else if($_GET['stran'] == "vsiVici") {
     include "template/vsiVici.html.php";
   }
+  else if($_GET['stran'] == 'urediBrisi' && isset($_SESSION['user'])) {
+    include "template/urediBrisi.html.php";
+  }
+  else if($_GET['stran'] == 'uredi' && isset($_SESSION['user'])) {
+    include 'template/uredi.html.php';
+  }
+  else if($_GET['stran'] == 'brisi' && isset($_SESSION['user'])) {
+    include 'template/brisi.html.php';
+  }
   else {
     include 'template/error.html.php';
   }
